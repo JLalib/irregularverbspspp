@@ -1,113 +1,168 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Irregular Verbs Game</title>
+  <title>Irregular Verbs Game | Bilal Jebari</title>
   <script src="sweetalert2.all.min.js"></script>
+  <link rel="icon" href="https://raw.githubusercontent.com/JLalib/irregularverbspspp/main/img/_logo_bilal_jebari.ico">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/vaakash/socializer@2f749eb/css/socializer.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LXY660XET5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  <!-- Google Font Moderna -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      margin: 0;
-      background: #0f172a;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .card {
-      width: 90%;
-      max-width: 500px;
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0px 0px 20px #00000088;
-      text-align: center;
-    }
-
-    h1 {
-      margin-top: 0;
-      font-size: 26px;
-      font-weight: 600;
-    }
-
-    #categoria {
-      opacity: 0.7;
-      font-size: 15px;
-      margin-bottom: 5px;
-    }
-
-    #pregunta {
-      font-size: 22px;
-      font-weight: 500;
-      margin: 15px 0;
-    }
-
-    .btn {
-      width: 100%;
-      background: #334155;
-      border-radius: 10px;
-      padding: 15px;
-      margin-top: 10px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-
-    .btn:hover {
-      background: #475569;
-      transform: scale(1.03);
-    }
-
-    .correcto {
-      background: #22c55e !important;
-      color: #ffffff;
-      transform: scale(1.05);
-    }
-
-    .incorrecto {
-      background: #ef4444 !important;
-      color: #ffffff;
-      transform: scale(1.05);
-    }
-
-    #puntaje {
-      margin-bottom: 15px;
-      font-size: 18px;
-      opacity: 0.9;
-    }
-
-    #numero {
-      opacity: 0.4;
-      position: absolute;
-      right: 15px;
-      top: 15px;
-    }
-  </style>
+    gtag('config', 'G-LXY660XET5');
+  </script>
 </head>
 
 <body>
+  <style>
 
-  <div class="card">
-    <h1>Irregular Verbs Game</h1>
-    <div id="puntaje"></div>
+    * {
+      transition: all 0.3s;
+    }
 
-    <div id="categoria"></div>
-    <div id="numero"></div>
-    <div id="pregunta"></div>
+    body {
+      background: cadetblue;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      font-family: calibri;
+      font-size: 100%;
+    }
+
+    .contenedor {
+      width: 98vw;
+      height: 97vh;
+      display: inline;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: auto;
+    }
+
+    .encabezado {
+      position: relative;
+      background: white;
+      min-width: 300px;
+      width: 70%;
+      max-width: 600px;
+      padding: 10px;
+    }
+
+    .categoria {
+      opacity: 0.5;
+      text-align: center;
+    }
+
+    .pregunta {
+      padding: 10px;
+      }
+
+    .imagen {
+      object-fit: cover;
+      height: 0px;
+      width: 0px;
+    }
+
+    .btn {
+      background: white;
+      width: 60%;
+      max-width: 550px;
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: scale(1.10);
+    }
+    
+    .numero{
+      position: absolute;
+      opacity:0.3;
+      top: 10px;
+      right: 10px;
+    }
+    
+    .puntaje{
+      padding:10px;
+      color:white;
+    }
+    .myButton {
+      box-shadow: 0px 1px 0px 0px #f0f7fa;
+      background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+      background-color:#33bdef;
+      border-radius:6px;
+      border:1px solid #057fd0;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:12px;
+      font-weight:bold;
+      padding:4px 16px;
+      text-decoration:none;
+      text-shadow:0px -1px 0px #5b6178;
+    }
+    .myButton:hover {
+      background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+      background-color:#019ad2;
+    }
+    .myButton:active {
+      position:relative;
+      top:1px;
+    }
+    a:hover {color: black;}
+  
+  </style>
+  <div class="socializer" data-features="32px,opacity,icon-white,pad" 
+  data-sites="email,twitter,instagram,blogger,github,linkedin" 
+  data-meta-link="" data-meta-title="" data-meta-email="mailto:bilaljebari@proton.me" data-meta-twitter="https://twitter.com/Bilal_Jebari" data-meta-instagram="https://www.instagram.com/bilaljebari_/" data-meta-blogger="https://bilaljebari.blogspot.com/" data-meta-github="https://github.com/JLalib" data-meta-linkedin="https://es.linkedin.com/in/bilal-jebari"></div>
+
+
+
+
+
+
+  <h1>Irregular Verbs Game</h1>
+<a href="https://jlalib.github.io/irregularverbspspp/" class="myButton">P. Simple / P. Participle</a> 
+  <div class="contenedor"><br>
+     
+    <div class="puntaje" id="puntaje"></div>
+    <center> <div class="encabezado">
+      <div class="categoria" id="categoria">
+      </div>
+      <div class="numero" id="numero"></div>
+      <div class="pregunta" id="pregunta">
+      </div>
+      <img src="#" class="imagen" id="imagen">
+    </div>
 
     <div class="btn" id="btn1" onclick="oprimir_btn(0)"></div>
     <div class="btn" id="btn2" onclick="oprimir_btn(1)"></div>
     <div class="btn" id="btn3" onclick="oprimir_btn(2)"></div>
     <div class="btn" id="btn4" onclick="oprimir_btn(3)"></div>
+    <script src="index.js"></script>
   </div>
-
-  <script src="index.js"></script>
+  <br>
+  <br>
+</center>
 </body>
+
+
+
+
+<a style="text-decoration:none" target="_blank" href="https://bilaljebari.blogspot.com/"><img src="https://raw.githubusercontent.com/JLalib/irregularverbspspp/main/img/_logo_bilal_jebari_copyright.png" alt="Bilal Jebari"></a><br>
+
+
+<script src="https://cdn.jsdelivr.net/gh/vaakash/socializer@2f749eb/js/socializer.min.js"></script>
+<script>
+(function(){
+    socializer( '.socializer' );
+}());
+</script>
+
 </html>
