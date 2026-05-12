@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Irregular Verbs Game | Bilal Jebari</title>
@@ -6,163 +8,1093 @@
   <link rel="icon" href="https://raw.githubusercontent.com/JLalib/irregularverbspspp/main/img/_logo_bilal_jebari.ico">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/vaakash/socializer@2f749eb/css/socializer.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LXY660XET5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-LXY660XET5');
   </script>
 </head>
 
 <body>
   <style>
-
     * {
-      transition: all 0.3s;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      background: cadetblue;
-      padding: 0;
-      margin: 0;
-      text-align: center;
-      font-family: calibri;
-      font-size: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Partículas flotantes de fondo */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     .contenedor {
-      width: 98vw;
-      height: 97vh;
-      display: inline;
+      width: 100%;
+      max-width: 700px;
+      display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      gap: 20px;
+      z-index: 1;
+      position: relative;
+    }
+
+    h1 {
+      color: white;
+      font-size: 3em;
       text-align: center;
-      margin: auto;
+      margin: 20px 0;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      font-weight: 700;
+      letter-spacing: 2px;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .socializer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .myButton {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 30px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin: 10px 0;
+    }
+
+    .myButton:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+    }
+
+    .myButton:active {
+      transform: translateY(-1px);
+    }
+
+    .puntaje {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 15px 30px;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.3em;
+      font-weight: 600;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      min-width: 150px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
 
     .encabezado {
       position: relative;
-      background: white;
-      min-width: 300px;
-      width: 70%;
-      max-width: 600px;
-      padding: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      width: 100%;
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      animation: slideUp 0.6s ease-out;
+      overflow: hidden;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .encabezado::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+      background-size: 300% 100%;
+      animation: gradientMove 3s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
     }
 
     .categoria {
-      opacity: 0.5;
-      text-align: center;
+      color: #667eea;
+      font-size: 0.9em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      opacity: 0.8;
     }
 
     .pregunta {
-      padding: 10px;
+      font-size: 2.5em;
+      font-weight: 700;
+      color: #2d3748;
+      margin: 20px 0;
+      text-align: center;
+      animation: pulse 0.5s ease-out;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.9);
+        opacity: 0;
       }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .numero {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1em;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
 
     .imagen {
       object-fit: cover;
-      height: 0px;
-      width: 0px;
+      width: 0;
+      height: 0;
+      border-radius: 15px;
+      transition: all 0.5s ease;
+    }
+
+    .btn-container {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .btn {
       background: white;
-      width: 60%;
-      max-width: 550px;
-      padding: 10px;
-      margin: 5px;
+      padding: 20px;
+      border-radius: 15px;
       cursor: pointer;
+      font-size: 1.1em;
+      font-weight: 500;
+      color: #2d3748;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(102, 126, 234, 0.1);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
     .btn:hover {
-      transform: scale(1.10);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      border-color: #667eea;
     }
-    
-    .numero{
-      position: absolute;
-      opacity:0.3;
-      top: 10px;
-      right: 10px;
+
+    .btn:active {
+      transform: translateY(-2px);
     }
-    
-    .puntaje{
-      padding:10px;
-      color:white;
+
+    .btn.correct {
+      background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+      color: white;
+      border-color: #84fab0;
+      animation: correctAnswer 0.6s ease;
     }
-    .myButton {
-      box-shadow: 0px 1px 0px 0px #f0f7fa;
-      background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
-      background-color:#33bdef;
-      border-radius:6px;
-      border:1px solid #057fd0;
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:Arial;
-      font-size:12px;
-      font-weight:bold;
-      padding:4px 16px;
-      text-decoration:none;
-      text-shadow:0px -1px 0px #5b6178;
+
+    @keyframes correctAnswer {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
-    .myButton:hover {
-      background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
-      background-color:#019ad2;
+
+    .btn.incorrect {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      color: white;
+      border-color: #fa709a;
+      animation: shake 0.5s ease;
     }
-    .myButton:active {
-      position:relative;
-      top:1px;
+
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-10px);
+      }
+      75% {
+        transform: translateX(10px);
+      }
     }
-    a:hover {color: black;}
-  
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    footer .socializer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    footer img {
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+    }
+
+    footer img:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .pregunta {
+        font-size: 1.8em;
+      }
+
+      .btn {
+        padding: 15px;
+        font-size: 1em;
+      }
+    }
   </style>
-  <div class="socializer" data-features="32px,opacity,icon-white,pad" 
-  data-sites="email,twitter,instagram,blogger,github,linkedin" 
-  data-meta-link="" data-meta-title="" data-meta-email="mailto:bilaljebari@proton.me" data-meta-twitter="https://twitter.com/Bilal_Jebari" data-meta-instagram="https://www.instagram.com/bilaljebari_/" data-meta-blogger="https://bilaljebari.blogspot.com/" data-meta-github="https://github.com/JLalib" data-meta-linkedin="https://es.linkedin.com/in/bilal-jebari"></div>
 
+  <!-- Partículas de fondo -->
+  <div class="particles" id="particles"></div>
 
+  <h1>Irregular Verbs Game 🎯</h1>
+  
+  <a href="https://jlalib.github.io/irregularverbspspp/" class="myButton">
+    🎯 P. Simple / P. Participle
+  </a> 
 
-
-
-
-  <h1>Irregular Verbs Game</h1>
-<a href="https://jlalib.github.io/irregularverbspspp/" class="myButton">P. Simple / P. Participle</a> 
-  <div class="contenedor"><br>
-     
+  <div class="contenedor">
     <div class="puntaje" id="puntaje"></div>
-    <center> <div class="encabezado">
-      <div class="categoria" id="categoria">
-      </div>
+    
+    <div class="encabezado">
+      <div class="categoria" id="categoria"></div>
       <div class="numero" id="numero"></div>
-      <div class="pregunta" id="pregunta">
-      </div>
-      <img src="#" class="imagen" id="imagen">
+      <div class="pregunta" id="pregunta"></div>
+      <img src="#" class="imagen" id="imagen" alt="">
     </div>
 
-    <div class="btn" id="btn1" onclick="oprimir_btn(0)"></div>
-    <div class="btn" id="btn2" onclick="oprimir_btn(1)"></div>
-    <div class="btn" id="btn3" onclick="oprimir_btn(2)"></div>
-    <div class="btn" id="btn4" onclick="oprimir_btn(3)"></div>
-    <script src="index.js"></script>
+    <div class="btn-container">
+      <div class="btn" id="btn1" onclick="oprimir_btn(0)"></div>
+      <div class="btn" id="btn2" onclick="oprimir_btn(1)"></div>
+      <div class="btn" id="btn3" onclick="oprimir_btn(2)"></div>
+      <div class="btn" id="btn4" onclick="oprimir_btn(3)"></div>
+    </div>
   </div>
-  <br>
-  <br>
-</center>
+
+  <footer>
+    <div style="margin: 20px 0;">
+      <p style="color: white; font-size: 1.1em; margin-bottom: 15px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+        Hecho con ❤️ by <strong>Bilal Jebari</strong> e IA
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Datos de preguntas integrados directamente
+    const base_preguntas = `[    
+	{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "be",
+        "respuesta": "was/were / been",
+        "incorrecta1": "i / was",
+        "incorrecta2": "wes / wis",
+        "incorrecta3": "wais / wais"
+    },
+    {
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "beat",
+        "respuesta": "beat / beaten",
+        "incorrecta1": "beated / beaten",
+        "incorrecta2": "biit / biiten",
+        "incorrecta3": "beat / beit"
+    },
+    {
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "become",
+        "respuesta": "became / become",
+        "incorrecta1": "becaime / become",
+        "incorrecta2": "bicam / became",
+        "incorrecta3": "beccome / becaime"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "begin",
+        "respuesta": "began / begun",
+        "incorrecta1": "begane / begun",
+        "incorrecta2": "bigann / beigan",
+        "incorrecta3": "begun / begin"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "bite",
+        "respuesta": "bit / bitten",
+        "incorrecta1": "bited / bited",
+        "incorrecta2": "bit / bited",
+        "incorrecta3": "beit / beit"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "break",
+        "respuesta": "broke / broken",
+        "incorrecta1": "broken / breik",
+        "incorrecta2": "bruk / broken",
+        "incorrecta3": "break / breik"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "bring",
+        "respuesta": "brought / brought",
+        "incorrecta1": "brught / brang",
+        "incorrecta2": "broutgh / breight",
+        "incorrecta3": "breight / bring"
+    },
+    {
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "build",
+        "respuesta": "built / built",
+        "incorrecta1": "builden / build",
+        "incorrecta2": "buil / build",
+        "incorrecta3": "bould / bold"
+    },
+    {
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "buy",
+        "respuesta": "bought / bought",
+        "incorrecta1": "bught / broutgh",
+        "incorrecta2": "bougth / bougth",
+        "incorrecta3": "bught / bught"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "can",
+        "respuesta": "could / -",
+        "incorrecta1": "cud / -",
+        "incorrecta2": "coult / -",
+        "incorrecta3": "couldt / -"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "catch",
+        "respuesta": "caught / caught",
+        "incorrecta1": "cught / caught",
+        "incorrecta2": "cought / cought",
+        "incorrecta3": "catch / catch"
+    },
+    {
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "choose",
+        "respuesta": "chose / chosen",
+        "incorrecta1": "chossen / chossen",
+        "incorrecta2": "chouse / chosen",
+        "incorrecta3": "chuze / chosen"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "come",
+        "respuesta": "came / come",
+        "incorrecta1": "caame / came",
+        "incorrecta2": "cume / cumen",
+        "incorrecta3": "kame / kome"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "cost",
+        "respuesta": "cost / cost",
+        "incorrecta1": "coust / cost",
+        "incorrecta2": "costen / cost",
+        "incorrecta3": "caoust / coust"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "cut",
+        "respuesta": "cut / cut",
+        "incorrecta1": "cout / cout",
+        "incorrecta2": "kut / kut",
+        "incorrecta3": "cat / cat"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "do",
+        "respuesta": "did / done",
+        "incorrecta1": "dyd / dyd",
+        "incorrecta2": "dide / done",
+        "incorrecta3": "deid / do"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "draw",
+        "respuesta": "drew / drawn",
+        "incorrecta1": "driw / driw",
+        "incorrecta2": "drouw / drawn",
+        "incorrecta3": "drit / drew"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "dream",
+        "respuesta": "dreamt / dreamt",
+        "incorrecta1": "dreimt / dreimt",
+        "incorrecta2": "draimt / dreamt",
+        "incorrecta3": "droum / droum"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "drink",
+        "respuesta": "drank / drunk",
+        "incorrecta1": "dranke / dranke",
+        "incorrecta2": "drounk / drounk",
+        "incorrecta3": "drounk / drank"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "drive",
+        "respuesta": "drove / driven",
+        "incorrecta1": "drouve / drouve",
+        "incorrecta2": "drouvt / drouven",
+        "incorrecta3": "droved / driven"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "eat",
+        "respuesta": "ate / eaten",
+        "incorrecta1": "eit / eit",
+        "incorrecta2": "it / iten",
+        "incorrecta3": "eited / eited"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "fall",
+        "respuesta": "fell / fallen",
+        "incorrecta1": "fill / fall",
+        "incorrecta2": "foull / foull",
+        "incorrecta3": "fall / fallen"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "feel",
+        "respuesta": "felt / felt",
+        "incorrecta1": "filt / filt",
+        "incorrecta2": "feilt / feilt",
+        "incorrecta3": "feelt / feelt"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "find",
+        "respuesta": "found / found",
+        "incorrecta1": "fund / fund",
+        "incorrecta2": "fouin / found",
+        "incorrecta3": "fownd / fownd"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "fly",
+        "respuesta": "flew / flown",
+        "incorrecta1": "fliw / fliw",
+        "incorrecta2": "flawou / flawou",
+        "incorrecta3": "fleid / fleid"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "forget",
+        "respuesta": "forgot / forgotten",
+        "incorrecta1": "fourgot / fourgot",
+        "incorrecta2": "furgot / furgot",
+        "incorrecta3": "forgotd / forgotten"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "get",
+        "respuesta": "got / got",
+        "incorrecta1": "gut / gut",
+        "incorrecta2": "gat / gat",
+        "incorrecta3": "geit / geit"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "give",
+        "respuesta": "gave / given",
+        "incorrecta1": "give / give",
+        "incorrecta2": "geive / geive",
+        "incorrecta3": "geivd / geivd"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "go",
+        "respuesta": "went / gone",
+        "incorrecta1": "wen / gon",
+        "incorrecta2": "gotd / gone",
+        "incorrecta3": "wint / wint"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "grow",
+        "respuesta": "grew / grown",
+        "incorrecta1": "griw / griw",
+        "incorrecta2": "growed / grown",
+        "incorrecta3": "growdt / growd"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "hang",
+        "respuesta": "hung / hung",
+        "incorrecta1": "haung / haung",
+        "incorrecta2": "hangned / hanged",
+        "incorrecta3": "haned / haned"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "have",
+        "respuesta": "had / had",
+        "incorrecta1": "hat / hat",
+        "incorrecta2": "heid /heid",
+        "incorrecta3": "haved / had"
+    },
+
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "hear",
+        "respuesta": "heard / heard",
+        "incorrecta1": "heardt / heardt",
+        "incorrecta2": "hiard / heard",
+        "incorrecta3": "heared / heard"
+    },
+    {
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "hide",
+        "respuesta": "hid / hidden",
+        "incorrecta1": "hide / hidden",
+        "incorrecta2": "haid / hided",
+        "incorrecta3": "hided / hided"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "hit",
+        "respuesta": "hit / hit",
+        "incorrecta1": "heit / heit",
+        "incorrecta2": "hate / hate",
+        "incorrecta3": "heided / heided"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "hurt",
+        "respuesta": "hurt / hurt",
+        "incorrecta1": "hurted / hurted",
+        "incorrecta2": "hurt / hurten",
+        "incorrecta3": "hurteid / hurt"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "keep",
+        "respuesta": "kept / kept",
+        "incorrecta1": "keeped / keeped",
+        "incorrecta2": "keipt / keipt",
+        "incorrecta3": "kieped / kept"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "know",
+        "respuesta": "knew / known",
+        "incorrecta1": "knewen / knewn",
+        "incorrecta2": "knowd / knowd",
+        "incorrecta3": "knowded / knowed"
+    },
+    {
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "lay",
+        "respuesta": "laid / laid",
+        "incorrecta1": "laid / laiden",
+        "incorrecta2": "laided / laided",
+        "incorrecta3": "laidden / laidden"
+    },
+
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "learn",
+        "respuesta": "learnt / learnt",
+        "incorrecta1": "learned / learned",
+        "incorrecta2": "liarnd / liarned",
+        "incorrecta3": "liarnt / liarnt"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "leave",
+        "respuesta": "left / left",
+        "incorrecta1": "left / leftd",
+        "incorrecta2": "lifted / left",
+        "incorrecta3": "leeft / leeft"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "lend",
+        "respuesta": "lent / lent",
+        "incorrecta1": "lended / lent",
+        "incorrecta2": "lented / lented",
+        "incorrecta3": "leint / leint"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "let",
+        "respuesta": "let / let",
+        "incorrecta1": "leted / leted",
+        "incorrecta2": "leited / leited",
+        "incorrecta3": "leded / let"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "lie",
+        "respuesta": "lay / lain",
+        "incorrecta1": "leiy / leid",
+        "incorrecta2": "leided / leided",
+        "incorrecta3": "layed / lain"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "lose",
+        "respuesta": "lost / lost",
+        "incorrecta1": "losted / losted",
+        "incorrecta2": "losed / losed",
+        "incorrecta3": "loust / loust"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "make",
+        "respuesta": "made / made",
+        "incorrecta1": "meik / meik",
+        "incorrecta2": "maked / maked",
+        "incorrecta3": "maded"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "mean",
+        "respuesta": "meant / meant",
+        "incorrecta1": "meaned / meant",
+        "incorrecta2": "meint / meand",
+        "incorrecta3": "meanted / meanted"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "meet",
+        "respuesta": "met / met",
+        "incorrecta1": "meeted / meeted",
+        "incorrecta2": "med / med",
+        "incorrecta3": "meted / meted"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "pay",
+        "respuesta": "paid / paid",
+        "incorrecta1": "peid / peid",
+        "incorrecta2": "payed / paid",
+        "incorrecta3": "peyet / peyet"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "put",
+        "respuesta": "put / put",
+        "incorrecta1": "puted / puted",
+        "incorrecta2": "pouted / pouted",
+        "incorrecta3": "putyed / putyed"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "read",
+        "respuesta": "read / read",
+        "incorrecta1": "riad / redded",
+        "incorrecta2": "readed / readed",
+        "incorrecta3": "readid / raded"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "ride",
+        "respuesta": "rode / ridden",
+        "incorrecta1": "roded / roded",
+        "incorrecta2": "rouded / rouded",
+        "incorrecta3": "roude / roude"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "ring",
+        "respuesta": "rang / rung",
+        "incorrecta1": "raned / raned",
+        "incorrecta2": "raouned / rouned",
+        "incorrecta3": "ringed / ringed"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "run",
+        "respuesta": "ran / run",
+        "incorrecta1": "raned / raned",
+        "incorrecta2": "rouned / rouned",
+        "incorrecta3": "runed / runed"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "say",
+        "respuesta": "said / said",
+        "incorrecta1": "sayed / said",
+        "incorrecta2": "saeided / saided",
+        "incorrecta3": "saitd / said"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "see",
+        "respuesta": "saw / seen",
+        "incorrecta1": "seid / siin",
+        "incorrecta2": "seed / seed",
+        "incorrecta3": "seded / sead"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "sell",
+        "respuesta": "sold / sold",
+        "incorrecta1": "selled / solded",
+        "incorrecta2": "solded / solded",
+        "incorrecta3": "sould / sould"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "send",
+        "respuesta": "sent / sent",
+        "incorrecta1": "sended / sended",
+        "incorrecta2": "sented / sented",
+        "incorrecta3": "seind / seind"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "set",
+        "respuesta": "set / set",
+        "incorrecta1": "seted / set",
+        "incorrecta2": "seited / seitd",
+        "incorrecta3": "souded / souded"
+    },
+    {
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "sew",
+        "respuesta": "sewed / sewn",
+        "incorrecta1": "sewed / sewed",
+        "incorrecta2": "sewed / sewn",
+        "incorrecta3": "sown / sown"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "shine",
+        "respuesta": "shone / shone",
+        "incorrecta1": "shined / shined",
+        "incorrecta2": "shoned / shone",
+        "incorrecta3": "shouned / shouned"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "shut",
+        "respuesta": "shut / shuted",
+        "incorrecta1": "shuted / shuted",
+        "incorrecta2": "shouted / shut",
+        "incorrecta3": "shout / shout"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "sing",
+        "respuesta": "sang / sung",
+        "incorrecta1": "sand / sung",
+        "incorrecta2": "seinged / sang",
+        "incorrecta3": "sangund / sangund"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "sit",
+        "respuesta": "sat / sat",
+        "incorrecta1": "sated / sated",
+        "incorrecta2": "seat / sat",
+        "incorrecta3": "sited / sat"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "sleep",
+        "respuesta": "slept / slept",
+        "incorrecta1": "sleeped / sleeped",
+        "incorrecta2": "sleipt / sleipt",
+        "incorrecta3": "sleupt / sleupt"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "smell",
+        "respuesta": "smelt / smelt",
+        "incorrecta1": "smelled / smelled",
+        "incorrecta2": "smalled / smalled",
+        "incorrecta3": "semltd / smelt"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "speak",
+        "respuesta": "spoke / spoken",
+        "incorrecta1": "speaked / speaked",
+        "incorrecta2": "spouke / spoken",
+        "incorrecta3": "speaktd / speaked"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "spend",
+        "respuesta": "spent / spent",
+        "incorrecta1": "spended / speint",
+        "incorrecta2": "speint / spent",
+        "incorrecta3": "spownt / spownt"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "stand",
+        "respuesta": "stood / stood",
+        "incorrecta1": "standed / standed",
+        "incorrecta2": "stouded / steind",
+        "incorrecta3": "steind / steind"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "steal",
+        "respuesta": "stole / stolen",
+        "incorrecta1": "stealed / stealed",
+        "incorrecta2": "steilded / stoll",
+        "incorrecta3": "stoll / stoll"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "swim",
+        "respuesta": "swam / swum",
+        "incorrecta1": "swmied / swimmed",
+        "incorrecta2": "swimmed / swmied",
+        "incorrecta3": "swamnd / swamnd"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "take",
+        "respuesta": "took / taken",
+        "incorrecta1": "taked / taked",
+        "incorrecta2": "teiken / teiken",
+        "incorrecta3": "taked / taked"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "teach",
+        "respuesta": "taught / taught",
+        "incorrecta1": "teached / teached",
+        "incorrecta2": "teacheded / teacheded",
+        "incorrecta3": "taughd / taught"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "tell",
+        "respuesta": "told / told",
+        "incorrecta1": "telled / tolded",
+        "incorrecta2": "tolded / tolded",
+        "incorrecta3": "tellen / told"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "think",
+        "respuesta": "thought / thought",
+        "incorrecta1": "thinked / thinkd",
+        "incorrecta2": "theinded / thinked",
+        "incorrecta3": "thinkd / thought"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "throw",
+        "respuesta": "threw / thrown",
+        "incorrecta1": "threwed / thrown",
+        "incorrecta2": "throwded / threwed",
+        "incorrecta3": "throwtd / thrownd"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "understand",
+        "respuesta": "understood / understood",
+        "incorrecta1": "understanded / understood",
+        "incorrecta2": "understooded / understand",
+        "incorrecta3": "understantd / understooded"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "wake",
+        "respuesta": "woke / woken",
+        "incorrecta1": "waked / waked",
+        "incorrecta2": "wokeded / wokeded",
+        "incorrecta3": "wokt / wokt"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "wear",
+        "respuesta": "wore / worn",
+        "incorrecta1": "wored / worn",
+        "incorrecta2": "weared / wear",
+        "incorrecta3": "weartd / worn"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "win",
+        "respuesta": "won / won",
+        "incorrecta1": "wont / wont",
+        "incorrecta2": "winded / winded",
+        "incorrecta3": "wonted / wined"
+    },
+{
+        "categoria": "Irregular Verbs - P.Simple / P.Participle",
+        "pregunta": "write",
+        "respuesta": "wrote / written",
+        "incorrecta1": "writed / writed",
+        "incorrecta2": "wroted / wroted",
+        "incorrecta3": "wrided / written"
+    }
+]
+`;
+  </script>
+  <script src="index.js"></script>
+  
 </body>
-
-
-
-
-<a style="text-decoration:none" target="_blank" href="https://bilaljebari.blogspot.com/"><img src="https://raw.githubusercontent.com/JLalib/irregularverbspspp/main/img/_logo_bilal_jebari_copyright.png" alt="Bilal Jebari"></a><br>
-
-
-<script src="https://cdn.jsdelivr.net/gh/vaakash/socializer@2f749eb/js/socializer.min.js"></script>
-<script>
-(function(){
-    socializer( '.socializer' );
-}());
-</script>
-
 </html>
